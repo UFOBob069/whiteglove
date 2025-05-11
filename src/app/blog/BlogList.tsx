@@ -58,11 +58,11 @@ export default async function BlogList() {
             <time className="text-sm text-green-400">{post.date}</time>
           </div>
           <h2 className="text-2xl font-bold text-green-900 mb-2">
-            <Link href={`/blog/${post.slug}`} className="hover:text-amber-600 transition-colors">{post.title}</Link>
+            <Link href={`/blog/${post.id}`} className="hover:text-amber-600 transition-colors">{post.title}</Link>
           </h2>
           <p className="text-green-800 mb-4">{post.excerpt}</p>
           <div className="flex items-center gap-4">
-            <Link href={`/blog/${post.slug}`} className="text-amber-600 font-semibold hover:underline">Read More</Link>
+            <Link href={`/blog/${post.id}`} className="text-amber-600 font-semibold hover:underline">Read More</Link>
             {/* Social Sharing Buttons */}
             <div className="flex gap-2">
               <a href={`https://twitter.com/intent/tweet?url=https://whiteglove.com/blog/${post.slug}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter" className="hover:text-amber-600">

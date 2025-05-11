@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { StarIcon } from '@heroicons/react/20/solid';
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -74,12 +75,14 @@ export default function Testimonials() {
                     </div>
                   </div>
                   <blockquote className="mt-6 text-xl font-semibold leading-8 text-gray-900">
-                    <p>"{testimonial.quote}"</p>
+                    <p>&quot;{testimonial.quote}&quot;</p>
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-x-4">
-                    <img
+                    <Image
                       src={testimonial.photo}
-                      alt={testimonial.name.replace(/"/g, '&quot;')}
+                      alt={testimonial.name}
+                      width={40}
+                      height={40}
                       className="h-10 w-10 rounded-full object-cover border-2 border-gold-500"
                     />
                     <div>

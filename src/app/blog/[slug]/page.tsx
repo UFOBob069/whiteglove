@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface BlogPost {
   id: string;
@@ -28,7 +29,7 @@ async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
     excerpt: fields.excerpt?.stringValue || '',
     content: fields.content?.stringValue || '',
     date: fields.date?.stringValue || '',
-    tags: fields.tags?.arrayValue?.values?.map((v: any) => v.stringValue) || [],
+    tags: fields.tags?.arrayValue?.values?.map((v: { stringValue: string }) => v.stringValue) || [],
     author: fields.author?.stringValue || '',
     imageUrl: fields.imageUrl?.stringValue || '',
   };
@@ -52,7 +53,14 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <h1 className="text-4xl font-serif font-bold text-green-900 mb-2">{post.title}</h1>
         <div className="text-green-400 text-sm mb-6">{post.date}</div>
         {post.imageUrl && (
-          <img src={post.imageUrl} alt={post.title} className="rounded-xl mb-8 w-full object-cover max-h-96" />
+          <Image
+            src={post.imageUrl}
+            alt={post.title}
+            width={800}
+            height={400}
+            className="rounded-xl mb-8 w-full object-cover max-h-96"
+            priority
+          />
         )}
         <article className="prose prose-green max-w-none text-green-900">
           {post.content?.split('\n').map((line, i) => (

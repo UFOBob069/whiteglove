@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const destinations = [
   {
     name: 'Pebble Beach',
@@ -32,9 +34,11 @@ export default function FeaturedDestinations() {
           {destinations.map((destination) => (
             <article key={destination.name} className="flex flex-col items-start">
               <div className="relative w-full">
-                <img
+                <Image
                   src={destination.image}
                   alt={destination.name}
+                  width={800}
+                  height={450}
                   className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
                 />
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />

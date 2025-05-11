@@ -45,11 +45,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <div className="mb-6">
           <Link href="/blog" className="text-green-700 hover:text-amber-600 font-semibold">← Back to Blog</Link>
         </div>
-        <div className="mb-4 flex flex-wrap gap-2">
-          {post.tags.map(tag => (
-            <span key={tag} className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-semibold">{tag}</span>
-          ))}
-        </div>
+        {post.tags?.length > 0 && (
+          <div className="mb-4 flex flex-wrap gap-2">
+            {post.tags.map(tag => (
+              <span key={tag} className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-semibold">{tag}</span>
+            ))}
+          </div>
+        )}
         <h1 className="text-4xl font-serif font-bold text-green-900 mb-2">{post.title}</h1>
         <div className="text-green-400 text-sm mb-6">{post.date}</div>
         {post.imageUrl && (

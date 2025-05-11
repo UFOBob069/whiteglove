@@ -35,7 +35,13 @@ async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function BlogPostPage({ params }: Props) {
   const post = await fetchBlogPost(params.slug);
   if (!post) return notFound();
 
